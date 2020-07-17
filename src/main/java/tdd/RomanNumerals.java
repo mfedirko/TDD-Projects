@@ -16,17 +16,7 @@ import java.util.Map;
         C can only be placed before D and M.
  */
 public class RomanNumerals {
-    private static final Map<Integer, String> BASIC_NUMERALS;
-    static {
-        BASIC_NUMERALS = new LinkedHashMap<>();
-        BASIC_NUMERALS.put(1000, "M");
-        BASIC_NUMERALS.put(500, "D");
-        BASIC_NUMERALS.put(100, "C");
-        BASIC_NUMERALS.put(50, "L");
-        BASIC_NUMERALS.put(10, "X");
-        BASIC_NUMERALS.put(5, "V");
-        BASIC_NUMERALS.put(1, "I");
-    }
+
     private int decimal;
     private String numeral = "";
     public static RomanNumerals fromDecimal(int i) {
@@ -39,10 +29,11 @@ public class RomanNumerals {
 
     private void createNumeral(int decimal) {
         if (decimal > 0) {
-            for (int num : BASIC_NUMERALS.keySet()) {
+            for (BasicNumeral numeral : BasicNumeral.ordered) {
+                int num = numeral.decimalValue;
                 if (decimal / num > 0) {
                     for (int i = 0; i < decimal / num; i++) {
-                        numeral += BASIC_NUMERALS.get(num);
+                        this.numeral += numeral;
                     }
                     decimal = decimal % num;
                     if (decimal == 0) break;
@@ -58,5 +49,25 @@ public class RomanNumerals {
     @Override
     public String toString() {
         return numeral;
+    }
+
+    private enum BasicNumeral {
+        I(1),
+        V(5),
+        X(10),
+        L(50),
+        C(100),
+        D(500),
+        M(1000);
+
+        private final int decimalValue;
+        BasicNumeral(int decimalValue) {
+            this.decimalValue = decimalValue;
+        }
+
+        private static final BasicNumeral[] ordered;
+        static {
+            ordered = new BasicNumeral[]{M, D, C, L, X, V, I};
+        }
     }
 }
