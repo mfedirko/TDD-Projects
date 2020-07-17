@@ -29,11 +29,12 @@ public class RomanNumerals {
     private void createNumeral(int decimal) {
         if (decimal > 0) {
             for (int num : BASIC_NUMERALS.keySet()) {
-                if (decimal % num == 0) {
+                if (decimal / num > 0) {
                     for (int i = 0; i < decimal / num; i++) {
                         numeral += BASIC_NUMERALS.get(num);
                     }
-                    break;
+                    decimal = decimal % num;
+                    if (decimal == 0) break;
                 }
             }
         }
