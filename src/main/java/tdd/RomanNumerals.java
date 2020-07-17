@@ -23,6 +23,7 @@ public class RomanNumerals {
         return new RomanNumerals(i);
     }
     private RomanNumerals(int decimal) {
+        if (decimal < 0 || decimal > 3999) throw new IllegalArgumentException("Only 0 - 3999 are supported!");
         this.decimal = decimal;
         createNumeral(decimal);
     }
