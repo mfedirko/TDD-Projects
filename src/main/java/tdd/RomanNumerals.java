@@ -23,6 +23,10 @@ public class RomanNumerals {
     }
     private RomanNumerals(int decimal) {
         this.decimal = decimal;
+        createNumeral(decimal);
+    }
+
+    private void createNumeral(int decimal) {
         if (decimal > 0) {
             numeral = BASIC_NUMERALS.get(decimal);
         }
