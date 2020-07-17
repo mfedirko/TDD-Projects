@@ -87,4 +87,14 @@ public class RomanNumeralsTest {
         assertEquals("CDXCIV", RomanNumerals.fromDecimal(494).toString());
         assertEquals("DCCXLIII", RomanNumerals.fromDecimal(743).toString());
     }
+
+
+    @Test(expected = IllegalArgumentException.class)
+    public void validateRange() {
+        RomanNumerals.fromDecimal(4231);
+    }
+    @Test(expected = IllegalArgumentException.class)
+    public void validateRange2() {
+        RomanNumerals.fromDecimal(-2);
+    }
 }
