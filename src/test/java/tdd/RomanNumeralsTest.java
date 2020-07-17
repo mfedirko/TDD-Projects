@@ -68,4 +68,13 @@ public class RomanNumeralsTest {
         assertEquals("MMII", RomanNumerals.fromDecimal(2002).toString());
         assertEquals("MDCCC", RomanNumerals.fromDecimal(1800).toString());
     }
+
+    @Test
+    public void rulesOfSubtraction() {
+        assertEquals("IV", RomanNumerals.fromDecimal(4).toString());
+        assertEquals("XIX", RomanNumerals.fromDecimal(19).toString());
+        assertEquals("MCMXCIX", RomanNumerals.fromDecimal(1999).toString());
+        assertEquals("XLIX", RomanNumerals.fromDecimal(49).toString());
+        assertEquals("CCCXCIV", RomanNumerals.fromDecimal(394).toString());
+    }
 }
