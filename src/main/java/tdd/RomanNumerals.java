@@ -52,17 +52,19 @@ public class RomanNumerals {
     }
 
     private enum BasicNumeral {
-        I(1),
-        V(5),
-        X(10),
-        L(50),
-        C(100),
-        D(500),
-        M(1000);
+        I(1, null),
+        V(5, I),
+        X(10, I),
+        L(50, X),
+        C(100, X),
+        D(500, C),
+        M(1000, C);
 
         private final int decimalValue;
-        BasicNumeral(int decimalValue) {
+        private final BasicNumeral subtractor;
+        BasicNumeral(int decimalValue, BasicNumeral subtractor) {
             this.decimalValue = decimalValue;
+            this.subtractor = subtractor;
         }
 
         private static final BasicNumeral[] ordered;
