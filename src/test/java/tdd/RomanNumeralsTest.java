@@ -33,4 +33,22 @@ public class RomanNumeralsTest {
         assertEquals("MM", RomanNumerals.fromDecimal(2000).toString());
         assertEquals("MMM", RomanNumerals.fromDecimal(3000).toString());
     }
+
+    @Test
+    public void twoNumerals_suffix() {
+        assertEquals("VI", RomanNumerals.fromDecimal(6).toString());
+        assertEquals("XI", RomanNumerals.fromDecimal(11).toString());
+        assertEquals("XV", RomanNumerals.fromDecimal(15).toString());
+        assertEquals("LI", RomanNumerals.fromDecimal(51).toString());
+        assertEquals("LV", RomanNumerals.fromDecimal(55).toString());
+        assertEquals("LX", RomanNumerals.fromDecimal(60).toString());
+        assertEquals("CV", RomanNumerals.fromDecimal(105).toString());
+        assertEquals("CX", RomanNumerals.fromDecimal(110).toString());
+        assertEquals("CL", RomanNumerals.fromDecimal(150).toString());
+        assertEquals("DC", RomanNumerals.fromDecimal(600).toString());
+        assertEquals("MI", RomanNumerals.fromDecimal(1001).toString());
+        assertEquals("MX", RomanNumerals.fromDecimal(1010).toString());
+        assertEquals("MC", RomanNumerals.fromDecimal(1100).toString());
+        assertEquals("MD", RomanNumerals.fromDecimal(1500).toString());
+    }
 }
