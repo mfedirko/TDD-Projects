@@ -7,7 +7,7 @@ import java.util.Map;
 public class RomanNumerals {
     private static final Map<Integer, String> BASIC_NUMERALS;
     static {
-        BASIC_NUMERALS = new HashMap<>();
+        BASIC_NUMERALS = new LinkedHashMap<>();
         BASIC_NUMERALS.put(1000, "M");
         BASIC_NUMERALS.put(500, "D");
         BASIC_NUMERALS.put(100, "C");
@@ -28,7 +28,14 @@ public class RomanNumerals {
 
     private void createNumeral(int decimal) {
         if (decimal > 0) {
-            numeral = BASIC_NUMERALS.get(decimal);
+            for (int num : BASIC_NUMERALS.keySet()) {
+                if (decimal % num == 0) {
+                    for (int i = 0; i < decimal / num; i++) {
+                        numeral += BASIC_NUMERALS.get(num);
+                    }
+                    break;
+                }
+            }
         }
     }
 
