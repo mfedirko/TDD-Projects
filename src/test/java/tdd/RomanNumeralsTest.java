@@ -77,4 +77,14 @@ public class RomanNumeralsTest {
         assertEquals("XLIX", RomanNumerals.fromDecimal(49).toString());
         assertEquals("CCCXCIV", RomanNumerals.fromDecimal(394).toString());
     }
+
+    @Test
+    public void largeNumbers() {
+        assertEquals("MMMDCCLXXXIV", RomanNumerals.fromDecimal(3784).toString());
+        assertEquals("MCCCXXIV", RomanNumerals.fromDecimal(1324).toString());
+        assertEquals("MCMLXXIV", RomanNumerals.fromDecimal(1974).toString());
+        assertEquals("MCMXCIX", RomanNumerals.fromDecimal(1999).toString());
+        assertEquals("CDXCIV", RomanNumerals.fromDecimal(494).toString());
+        assertEquals("DCCXLIII", RomanNumerals.fromDecimal(743).toString());
+    }
 }
