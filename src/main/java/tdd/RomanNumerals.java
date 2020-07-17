@@ -31,13 +31,7 @@ public class RomanNumerals {
     private void createNumeral(int decimal) {
         if (decimal > 0) {
             for (BasicNumeral numeral : BasicNumeral.ordered) {
-                boolean useSubtractor = false;
-                BasicNumeral subtractor = numeral.subtractor;
-                if (subtractor != null) {
-                    if ((decimal + subtractor.decimalValue) / numeral.decimalValue > decimal / numeral.decimalValue) {
-                        useSubtractor = true;
-                    }
-                }
+                boolean useSubtractor = shouldUseSubtractor(decimal, numeral);
 
                 int num = numeral.decimalValue;
                 if (decimal / num > 0 || useSubtractor) {
@@ -46,6 +40,7 @@ public class RomanNumerals {
                             this.numeral += numeral;
                         }
                     } else {
+                        BasicNumeral subtractor = numeral.subtractor;
                         decimal = decimal + subtractor.decimalValue;
                         for (int i = 0; i < (decimal / num) - 1; i++) {
                             this.numeral += numeral;
@@ -58,6 +53,17 @@ public class RomanNumerals {
                 }
             }
         }
+    }
+
+    private boolean shouldUseSubtractor(int decimal, BasicNumeral numeral) {
+        boolean useSubtractor = false;
+        BasicNumeral subtractor = numeral.subtractor;
+        if (subtractor != null) {
+            if ((decimal + subtractor.decimalValue) / numeral.decimalValue > decimal / numeral.decimalValue) {
+                useSubtractor = true;
+            }
+        }
+        return useSubtractor;
     }
 
     public int getDecimal() {
