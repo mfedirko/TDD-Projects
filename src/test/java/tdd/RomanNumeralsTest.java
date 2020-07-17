@@ -51,4 +51,21 @@ public class RomanNumeralsTest {
         assertEquals("MC", RomanNumerals.fromDecimal(1100).toString());
         assertEquals("MD", RomanNumerals.fromDecimal(1500).toString());
     }
+
+    @Test
+    public void multiNumerals_suffix() {
+        assertEquals("VII", RomanNumerals.fromDecimal(7).toString());
+        assertEquals("VIII", RomanNumerals.fromDecimal(8).toString());
+        assertEquals("XIII", RomanNumerals.fromDecimal(13).toString());
+        assertEquals("XVII", RomanNumerals.fromDecimal(17).toString());
+        assertEquals("XXII", RomanNumerals.fromDecimal(22).toString());
+        assertEquals("XXXV", RomanNumerals.fromDecimal(35).toString());
+        assertEquals("CCV", RomanNumerals.fromDecimal(205).toString());
+        assertEquals("CCCXII", RomanNumerals.fromDecimal(312).toString());
+        assertEquals("CLVI", RomanNumerals.fromDecimal(156).toString());
+        assertEquals("CLX", RomanNumerals.fromDecimal(160).toString());
+        assertEquals("MMXX", RomanNumerals.fromDecimal(2020).toString());
+        assertEquals("MMII", RomanNumerals.fromDecimal(2002).toString());
+        assertEquals("MDCCC", RomanNumerals.fromDecimal(1800).toString());
+    }
 }
