@@ -30,9 +30,26 @@ public class RomanNumerals {
     private void createNumeral(int decimal) {
         if (decimal > 0) {
             for (BasicNumeral numeral : BasicNumeral.ordered) {
+                boolean useSubtractor = false;
+                BasicNumeral subtractor = numeral.subtractor;
+                if (subtractor != null) {
+                    if ((decimal + subtractor.decimalValue) / numeral.decimalValue > decimal / numeral.decimalValue) {
+                        useSubtractor = true;
+                    }
+                }
+
                 int num = numeral.decimalValue;
-                if (decimal / num > 0) {
-                    for (int i = 0; i < decimal / num; i++) {
+                if (decimal / num > 0 || useSubtractor) {
+                    if (!useSubtractor) {
+                        for (int i = 0; i < decimal / num; i++) {
+                            this.numeral += numeral;
+                        }
+                    } else {
+                        decimal = decimal + subtractor.decimalValue;
+                        for (int i = 0; i < (decimal / num) - 1; i++) {
+                            this.numeral += numeral;
+                        }
+                        this.numeral += subtractor;
                         this.numeral += numeral;
                     }
                     decimal = decimal % num;
