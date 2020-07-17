@@ -49,8 +49,8 @@ public class RomanNumerals {
                         this.numeral += numeral;
                     }
                     decimal = decimal % num;
-                    if (decimal == 0) break;
                 }
+                if (decimal == 0) break;
             }
         }
     }
